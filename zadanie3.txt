@@ -1,0 +1,4 @@
+Przejechana odległość wynosi: 120
+Odległość przejechana po 1 godzinie: 40
+Odległość przejechana po 2 godzinie: 80
+Odległość przejechana po 3 godzinie: 120
