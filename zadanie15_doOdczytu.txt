@@ -1,0 +1,7 @@
+to jest tekst. pierwsza linia.
+to jest tekst. druga linia.
+to jest tekst. trzecia linia.
+to jest tekst. czwarta linia.
+to jest tekst. piąta linia.
+to jest tekst. szósta linia.
+to jest tekst. siódma linia.
