@@ -3,50 +3,22 @@ package Methods;
 import java.util.Scanner;
 
 public class Zadanie3 {
-    static double iloscFarby(double powierzchnia, double dziesiec) {
-        double liczbaPotrzebnychLitrowFarby = (powierzchnia / dziesiec) * 1.5;
-        return liczbaPotrzebnychLitrowFarby;
-    }
-
-    static double iloscGodzin(double powierzchnia, double dziesiec) {
-        double czasPracy = (powierzchnia / dziesiec) * 8;
-        return czasPracy;
-    }
-    static double ileKosztujeFarba(double ilosc, double cena) {
-        return ilosc * cena;
-    }
-//
-    static double ileKosztujeRobocizna(double kosztRobociznyZaGodzine, double iloscGodzin) {
-        return kosztRobociznyZaGodzine * iloscGodzin;
-    }
-//
-    static double obliczLacznyKoszt(double kosztFarby, double kosztRobocizny) {
-        return kosztFarby + kosztRobocizny;
-    }
-
     public static void main(String[] args) {
-        Scanner klawiatura = new Scanner(System.in);
 
-        System.out.println("Ile pokojów chcesz pomalować?");
-        int iloscPokojow = klawiatura.nextInt();
+//        System.out.println("Ile pokojów chcesz pomalować?");
+//        int iloscPokojow = klawiatura.nextInt();
+        int iloscPokojow = ilePokojow();
 
-        double powierzchniaLaczna = 0;
-        for(int i = 1; i <= iloscPokojow; i++) {
-            System.out.println("Podaj powierzchnię " + i + ". pokoju w m2");
-            powierzchniaLaczna += klawiatura.nextDouble();
-        }
+        double powierzchniaLaczna = jakaPowierzchnia(iloscPokojow);
+
+        double cenaFarbyZaLitr = cenaZaLitrFarby();
 
         double dziesiecM2 = 10;
         double farbaWLitrach = iloscFarby(powierzchniaLaczna, dziesiecM2);
         double godziny = iloscGodzin(powierzchniaLaczna, dziesiecM2);
-
-        System.out.println("Podaj cenę farby za 1 litr");
-        double cenaFarbyZaLitr = klawiatura.nextDouble();
         double kosztFarby = ileKosztujeFarba(farbaWLitrach, cenaFarbyZaLitr);
-
         double kosztRobociznyZaGodzine = 18.00;
         double kosztRobocizny = ileKosztujeRobocizna(kosztRobociznyZaGodzine, godziny);
-
         double kosztLaczny = obliczLacznyKoszt(kosztFarby, kosztRobocizny);
 
 
@@ -55,5 +27,49 @@ public class Zadanie3 {
         System.out.println("koszt farby: " + kosztFarby);
         System.out.println("Koszt robocizny: " + kosztRobocizny);
         System.out.println("Łączny koszt: " + kosztLaczny);
+    }
+
+    public static int ilePokojow() {
+        Scanner klawiatura = new Scanner(System.in);
+        System.out.println("Ile pokojów chcesz pomalować?");
+        int iloscPokojow = klawiatura.nextInt();
+        return iloscPokojow;
+    }
+
+    public static double jakaPowierzchnia(int iloscPokojow) {
+        Scanner klawiatura = new Scanner(System.in);
+        double powierzchniaLaczna = 0;
+        for(int i = 1; i <= iloscPokojow; i++) {
+            System.out.println("Podaj powierzchnię " + i + ". pokoju w m2");
+            powierzchniaLaczna += klawiatura.nextDouble();
+        }
+        return powierzchniaLaczna;
+    }
+
+    public static double cenaZaLitrFarby() {
+        Scanner klawiatura = new Scanner(System.in);
+        System.out.println("Podaj cenę farby za 1 litr");
+        double cenaZaLitr = klawiatura.nextDouble();
+        return cenaZaLitr;
+    }
+
+    public static double iloscFarby(double powierzchnia, double dziesiec) {
+        double liczbaPotrzebnychLitrowFarby = (powierzchnia / dziesiec) * 1.5;
+        return liczbaPotrzebnychLitrowFarby;
+    }
+
+    public static double iloscGodzin(double powierzchnia, double dziesiec) {
+        double czasPracy = (powierzchnia / dziesiec) * 8;
+        return czasPracy;
+    }
+    public static double ileKosztujeFarba(double ilosc, double cena) {
+        return ilosc * cena;
+    }
+
+    public static double ileKosztujeRobocizna(double kosztRobociznyZaGodzine, double iloscGodzin) {
+        return kosztRobociznyZaGodzine * iloscGodzin;
+    }
+    public static double obliczLacznyKoszt(double kosztFarby, double kosztRobocizny) {
+        return kosztFarby + kosztRobocizny;
     }
 }
