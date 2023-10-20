@@ -3,30 +3,26 @@ package Methods;
 import java.util.Scanner;
 
 public class Zadanie3 {
-//    static int malarz(int iloscLitrowfarby, int iloscGodzinPracy, double kossztFarby, double kosztRobocizny, doub) {
-//
-//    }
     static double iloscFarby(double powierzchnia, double dziesiec) {
         double liczbaPotrzebnychLitrowFarby = (powierzchnia / dziesiec) * 1.5;
         return liczbaPotrzebnychLitrowFarby;
     }
 
     static double iloscGodzin(double powierzchnia, double dziesiec) {
-        double czasPracy = (powierzchnia * dziesiec) * 8;
+        double czasPracy = (powierzchnia / dziesiec) * 8;
         return czasPracy;
     }
+    static double ileKosztujeFarba(double ilosc, double cena) {
+        return ilosc * cena;
+    }
 //
-//    static double kosztFarby(double kosztFarba) {
+    static double ileKosztujeRobocizna(double kosztRobociznyZaGodzine, double iloscGodzin) {
+        return kosztRobociznyZaGodzine * iloscGodzin;
+    }
 //
-//    }
-//
-//    static double kosztRobocizny(double kosztRobocizna) {
-//
-//    }
-//
-//    static double lacznyKoszt(double kosztLaczny) {
-//
-//    }
+    static double obliczLacznyKoszt(double kosztFarby, double kosztRobocizny) {
+        return kosztFarby + kosztRobocizny;
+    }
 
     public static void main(String[] args) {
         Scanner klawiatura = new Scanner(System.in);
@@ -34,16 +30,30 @@ public class Zadanie3 {
         System.out.println("Ile pokojów chcesz pomalować?");
         int iloscPokojow = klawiatura.nextInt();
 
-        double powierzchnia = 0;
+        double powierzchniaLaczna = 0;
         for(int i = 1; i <= iloscPokojow; i++) {
             System.out.println("Podaj powierzchnię " + i + ". pokoju w m2");
-            powierzchnia += klawiatura.nextDouble();
+            powierzchniaLaczna += klawiatura.nextDouble();
         }
 
-        double zaKazde10m = 10;
-        double farbaWLitrach = iloscFarby(powierzchnia, zaKazde10m);
-        double godziny = iloscGodzin(powierzchnia, zaKazde10m);
+        double dziesiecM2 = 10;
+        double farbaWLitrach = iloscFarby(powierzchniaLaczna, dziesiecM2);
+        double godziny = iloscGodzin(powierzchniaLaczna, dziesiecM2);
+
+        System.out.println("Podaj cenę farby za 1 litr");
+        double cenaFarbyZaLitr = klawiatura.nextDouble();
+        double kosztFarby = ileKosztujeFarba(farbaWLitrach, cenaFarbyZaLitr);
+
+        double kosztRobociznyZaGodzine = 18.00;
+        double kosztRobocizny = ileKosztujeRobocizna(kosztRobociznyZaGodzine, godziny);
+
+        double kosztLaczny = obliczLacznyKoszt(kosztFarby, kosztRobocizny);
+
+
         System.out.println("Potrzeba: " + farbaWLitrach + " litrów farby");
         System.out.println("Ilość godzin pracy: " + godziny);
+        System.out.println("koszt farby: " + kosztFarby);
+        System.out.println("Koszt robocizny: " + kosztRobocizny);
+        System.out.println("Łączny koszt: " + kosztLaczny);
     }
 }
