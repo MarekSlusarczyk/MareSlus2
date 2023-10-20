@@ -12,7 +12,8 @@ public class Zadanie6 {
             wynikiTestow[i] = wynik;
         }
 
-        System.out.println("średnia ze wszystkich testów: " + calcAverage(wynikiTestow));
+        System.out.println("średnia ze wszystkich " +
+                "testów: " + calcAverage(wynikiTestow));
 
         for(int i = 0; i < wynikiTestow.length; i++) {
             System.out.println("Ocena z " + (i+1) + " testu: " + determineGrade(wynikiTestow[i]));
